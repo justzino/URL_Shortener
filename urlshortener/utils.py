@@ -3,8 +3,8 @@ from string import ascii_letters, digits
 
 from django.conf import settings
 
-MAX_URL_SIZE = settings.MAX_URL_SIZE   # shorten url 최대 길이
-BASE62 = ascii_letters + digits     # base62 문자들
+MAX_URL_SIZE = settings.MAX_URL_SIZE  # shorten url 최대 길이
+BASE62 = ascii_letters + digits  # base62 문자들
 
 
 def make_random_path(length=MAX_URL_SIZE, chars=BASE62):
