@@ -8,6 +8,8 @@ env = os.getenv
 SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = False
+ALLOWED_HOSTS += ['originalll.pythonanywhere.com']
+
 
 THIRD_PARTY_APPS += [
 
