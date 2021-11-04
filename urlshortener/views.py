@@ -1,3 +1,4 @@
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import ShortenerForm
@@ -40,3 +41,14 @@ def index_view(request):
 
         return render(request, template, context)
 
+
+def redirect_view(request, short_path):
+    try:
+        shortener = URLMap.objects.get(short_url=short_path)
+        shortener.save()
+
+        return HttpResponseRedirect(shortener.original_url)
+
+    # URLMap.DoesNotExist
+    except:
+        raise Http404('유효하지 않은 url 입니다.')
