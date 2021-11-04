@@ -1,5 +1,7 @@
 from django.db import models
 
+from .utils import make_short_url
+
 
 class TimeStampedModel(models.Model):
     """ Time Stamped Model """
@@ -22,3 +24,9 @@ class URLMap(TimeStampedModel):
     def __str__(self):
         return f'original_url: {self.original_url}, short_url: {self.short_url}'
 
+    def save(self, *args, **kwargs):
+        # save method 동작시 short_url 생성 후 저장.
+        if not self.short_url:
+            self.short_url = make_short_url(self)
+
+        super().save(*args, **kwargs)
