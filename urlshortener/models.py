@@ -1,6 +1,9 @@
+from django.conf import settings
 from django.db import models
 
 from .utils import make_short_url
+
+MAX_URL_SIZE = settings.MAX_URL_SIZE   # shorten url 최대 길이
 
 
 class TimeStampedModel(models.Model):
@@ -19,7 +22,7 @@ class URLMap(TimeStampedModel):
     """
 
     original_url = models.URLField()
-    short_url = models.CharField(max_length=7, unique=True)
+    short_url = models.CharField(max_length=MAX_URL_SIZE, unique=True)
 
     def __str__(self):
         return f'original_url: {self.original_url}, short_url: {self.short_url}'

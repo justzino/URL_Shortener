@@ -1,8 +1,9 @@
 from random import choice
 from string import ascii_letters, digits
 
+from django.conf import settings
 
-MAX_URL_SIZE = 7   # shorten url 최대 길이
+MAX_URL_SIZE = settings.MAX_URL_SIZE   # shorten url 최대 길이
 BASE62 = ascii_letters + digits     # base62 문자들
 
 
