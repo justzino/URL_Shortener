@@ -20,14 +20,14 @@
    - 이유: BASE64 에는 '+', '/' 가 포함되기 때문에 제외하고 사용.
    - `BASE62 = ascii_letters + digits` 로 생성 가능
 
-## 선택지
+## url shortening 구현 방법 고민
 1. Hash 기반의 알고리즘  
    → 8자리 미만으로 hash 충돌이 일어나지 않음을 보장해야함.  
 2. BASE62로 주소 Encoding  
    → 길이가 너무 길어짐.
 3. original_url : short_url 로 저장.
-   1. key-value 형태의 db 사용 ✅
-   2. 일반 RDBMS 사용
+   1. key-value 형태의 db 사용
+   2. 일반 RDBMS 사용 ✅
 
 > 선택: 일반 RDBMS에 id, original_url, short_url 형태로 저장.
 
